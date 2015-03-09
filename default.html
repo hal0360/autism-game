@@ -1,0 +1,1091 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+    <title>Hello World!</title>
+
+    <style>
+        html {
+            -ms-content-zooming: none;
+            -ms-touch-action: none;
+        }
+        
+        body {
+            
+          
+            overflow: hidden;
+        }
+
+        .arrow {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-top: 20px solid transparent;
+            border-bottom: 20px solid transparent;
+            border-left: 20px solid green;
+        }
+
+        #right {
+            left: 91%;
+            top: 91%;
+            -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+
+        #left {
+            left: 0.7%;
+            top: -2.4%;
+            display: none;
+            -webkit-transform: rotate(225deg);
+            transform: rotate(225deg);
+        }
+
+        .arrow:active {
+            border-top: 20px solid transparent;
+            border-bottom: 20px solid transparent;
+            border-left: 20px solid red;
+        }
+
+        #menuBox {
+            position: absolute;
+            height: 44.5%;
+            width: 15%;
+            z-index: 999;
+            left: -13%;
+            top: -40.5%;
+            background: -webkit-linear-gradient(left, #32CD32, #7CFC00, #32CD32);
+            background: linear-gradient(to right, #32CD32, #7CFC00, #32CD32);
+            box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);
+            animation-duration: 1s;
+            animation-timing-function: ease;
+        }
+
+        .menuButton {
+            position: absolute;
+            border: 2px #808080 solid;
+            height: 10%;
+            width: 80%;
+            border-radius: 100px;
+            background: linear-gradient(#E6E6FA, #A9A9A9);
+        }
+        .menuButton:active{
+            background: yellow;
+        }
+
+        .box {
+            position: absolute;
+            width: 6.5%;
+            height: 10%;
+        }
+
+        .sub {
+            overflow: hidden;
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            width: 100%;
+            height: 100%;
+            -webkit-animation-duration: 1s;
+            -webkit-animation-timing-function: linear;
+            animation-duration: 1s;
+            animation-timing-function: linear;
+        }
+
+        .symSub {
+            border: 1px red solid;
+            -webkit-border-radius: 8%;
+            border-radius: 8%;
+        }
+
+        .symImg {
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            height: 80%;
+        }
+
+        .symTxt {
+            position: absolute;
+            top: 76%;
+            width: 100%;
+            text-align: center;
+            background: white;
+        }
+
+        .folImg {
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            height: 100%;
+        }
+
+        .folTxt {
+            position: absolute;
+            top: 48%;
+            width: 100%;
+            text-align: center;
+            background: rgba(255,255,255,0);
+        }
+
+        .starImg {
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            height: 100%;
+            -webkit-animation-duration: 2s;
+            -webkit-animation-timing-function: linear;
+            animation-duration: 2s;
+            animation-timing-function: linear;
+        }
+
+        @-webkit-keyframes twinkle {
+            0% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @keyframes twinkle {
+            0% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @-webkit-keyframes bringUp {
+            from {
+                left: -13%;
+                top: -40.5%;
+            }
+
+            to {
+                left: 0%;
+                top: 0%;
+            }
+        }
+
+        @keyframes bringUp {
+            from {
+                left: -13%;
+                top: -40.5%;
+            }
+
+            to {
+                left: 0%;
+                top: 0%;
+            }
+        }
+
+        @-webkit-keyframes bringOut {
+            from {
+                left: 0%;
+                top: 0%;
+            }
+
+            to {
+                left: -13%;
+                top: -40.5%;
+            }
+        }
+
+        @keyframes bringOut {
+            from {
+                left: 0%;
+                top: 0%;
+            }
+
+            to {
+                left: -13%;
+                top: -40.5%;
+            }
+        }
+
+        @-webkit-keyframes flop {
+            from {
+                transform: rotateY(270deg);
+            }
+
+            to {
+                transform: rotateY(360deg);
+            }
+        }
+
+        @keyframes flop {
+            from {
+                transform: rotateY(270deg);
+            }
+
+            to {
+                transform: rotateY(360deg);
+            }
+        }
+
+        @-webkit-keyframes flip {
+            from {
+                transform: rotateX(270deg);
+            }
+
+            to {
+                transform: rotateX(360deg);
+            }
+        }
+
+        @keyframes flip {
+            from {
+                transform: rotateX(270deg);
+            }
+
+            to {
+                transform: rotateX(360deg);
+            }
+        }
+
+        @-webkit-keyframes zoom {
+            from {
+                transform: scale(0.2);
+            }
+
+            to {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes zoom {
+            from {
+                transform: scale(0.2);
+            }
+
+            to {
+                transform: scale(1);
+            }
+        }
+
+        #swap {
+            position: absolute;
+            border-radius: 8px;
+            box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);
+            height: 7%;
+            width: 7%;
+            font: bold 17px Arial, Helvetica;
+            text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+        }
+
+        .swapEnable{
+			border: 2px double #FFC680;
+			background: linear-gradient(#FFB459 50%, #FF9D26 50%);
+			color: blue;
+			opacity: 1;
+		}	
+		.swapEnable:active{
+		    background: yellow;
+			color: red;
+		}
+		.swapDisable{
+			border: 2px double #939393;
+			background: linear-gradient(#ACACAC, #ECECEC);
+			color: grey;
+			opacity: 0.9;
+		}
+
+        #tableBox {
+            position: absolute;
+            left: 1%;
+            top: 46%;
+            border: 5px #1E90FF ridge;
+            width: 97%;
+            height: 52%;
+            overflow-y: scroll;
+        }
+
+        .socket {
+            position: absolute;
+            border: 2px #191970 dotted;
+            width: 7.2%;
+            height: 20%;
+        }
+
+        #fake {
+            position: absolute;
+            top: 8%;
+            left: 20%;
+            display: none;
+            height: 25%;
+            width: 60%;
+            border: 1px black inset;
+            background: #E0FFFF;
+        }
+
+        #selImage {
+            position: absolute;
+            top: 8%;
+            left: 20%;
+            opacity: 0;
+            display: none;
+            height: 25%;
+            width: 60%;
+        }
+
+        #imageName {
+            position: absolute;
+            top: 44%;
+            left: 10%;
+            display: none;
+            height: 7%;
+            width: 80%;
+        }
+
+        #category {
+            position: absolute;
+            top: 60%;
+            left: 10%;
+            display: none;
+            height: 7%;
+            width: 80%;
+        }
+
+        #ok {
+            position: absolute;
+            top: 75%;
+            left: 55%;
+            display: none;
+            height: 10%;
+            width: 35%;
+        }
+        #ok:active{
+            background: blue;
+
+        }
+
+        #no {
+            position: absolute;
+            top: 75%;
+            left: 10%;
+            display: none;
+            height: 10%;
+            width: 35%;
+        }
+        #no:active{
+            background: blue;
+        }
+
+        #minder {
+            position: absolute;
+            top: 34%;
+            left: 10%;
+            display: none;
+        }
+
+        #minder2 {
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            display: none;
+        }
+
+        #name1 {
+            position: absolute;
+            left: 11%;
+            top: 20%;
+            font: bold 18px Arial, Helvetica;
+            color: #F0FFFF;
+        }
+
+        #name2 {
+            position: absolute;
+            left: 16%;
+            top: 20%;
+            font: bold 18px Arial, Helvetica;
+            color: #F0FFFF;
+        }
+
+        .playerBall {
+            position: absolute;
+            width: 7.5%;
+            top: 6%;
+        }
+
+        #undo {
+            position: absolute;
+            top: 58%;
+            left: 94%;
+            height: 40px;
+            width: 9%;
+            background: linear-gradient(#CBC5EE, #796AD2);
+            box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        #arrow-left {
+            position: absolute;
+            width: 28.2842712475px;
+            height: 28.2842712475px;
+            left: -14px;
+            top: 5.85px;
+            background: linear-gradient(135deg, #CBC5EE, #796AD2);
+            transform: rotate(45deg);
+        }
+
+        #Untext {
+            position: absolute;
+            left: 15px;
+            top: -6px;
+            font: bold 18px Arial, Helvetica;
+            color: #F0FFFF;
+            -ms-touch-select: none;
+            -ms-user-select: none;
+        }
+    </style>
+</head>
+<body onload="powerup()">
+    <div id="player1" class="playerBall" style="left: 4.3%;"><p id="name1">Question</p></div>
+    <div id="player2" class="playerBall" style="left: 89.3%;"><p id="name2">Answer</p></div>
+    <div id="tableBox"></div>
+
+    <div id="menuBox">
+        <button id="addSymbol" class="menuButton" style="top: 18%; left: 10%;">Add content</button>
+        <button id="clearScreen" class="menuButton" style="top: 36%; left: 10%;">Clear screen</button>
+        <button id="deleteFile" class="menuButton" style="top: 54%; left: 10%;">Delete files</button>
+        <button id="exxit" class="menuButton" style="top: 72%; left: 10%;">Exit game</button>
+        <div class="arrow" id="right"></div>
+        <div class="arrow" id="left"></div>
+        <div id="fake"><span>Tap here to upload an image</span></div>
+        <input id="imageName" type="text" />
+        <input id="category" type="text" />
+        <button id="ok">OK</button>
+        <button id="no">Back</button>
+        <p id="minder">Name of the symbol:</p>
+        <p id="minder2">Category:</p>
+    </div>
+    <button id="swap" class="control" style="top: 90%; left: 45%;">SWAP</button>
+    <div id="undo"><div id="arrow-left"></div><p id="Untext">Undo</p></div>
+    
+    <script>
+        var undo = document.getElementById("undo");
+        var applicationData = Windows.Storage.ApplicationData.current;
+        var localFolder = applicationData.localFolder;
+        var right = document.getElementById("right");
+        var left = document.getElementById("left");
+        var menuBox = document.getElementById("menuBox");
+        var addSymbol = document.getElementById("addSymbol");
+        var clearScreen = document.getElementById("clearScreen");
+        var deleteFile = document.getElementById("deleteFile");
+        var exxit = document.getElementById("exxit");
+        var category = document.getElementById("category");
+        var minder = document.getElementById("minder");
+        var minder2 = document.getElementById("minder2");
+        var swap = document.getElementById("swap");
+        var name1 = document.getElementById("name1");
+        var name2 = document.getElementById("name2");
+        var player1 = document.getElementById("player1");
+        var player2 = document.getElementById("player2");
+
+        var selImage = document.createElement("input");
+        selImage.type = "file";
+        selImage.id = "selImage";
+        selImage.addEventListener("change", handleFileSelection, false);
+        menuBox.appendChild(selImage);
+
+        var imageName = document.getElementById("imageName");
+        var fake = document.getElementById("fake");
+        var ok = document.getElementById("ok");
+        var no = document.getElementById("no");
+        var conversations = [];
+        var symbols = [];
+        var table = document.getElementById("tableBox");
+        var symIndex = 1, conIndex = 1, tempData, jsonData, dataIndex = 0;
+        var backToHome, homeIcon, backPage;
+
+        ok.addEventListener("MSPointerUp", accept, false);
+        no.addEventListener("MSPointerUp", cancel, false);
+        right.addEventListener("MSPointerUp", showit, false);
+        left.addEventListener("MSPointerUp", hiddit, false);
+        exxit.addEventListener("MSPointerUp", quitt, false);
+        addSymbol.addEventListener("MSPointerUp", addit, false);
+        swap.addEventListener("MSPointerUp", swapRole, false);
+       // clearScreen.addEventListener("MSPointerUp", clearAll, false);
+        menuBox.addEventListener('animationend', stoppu, false);
+        undo.addEventListener('MSPointerDown', UndoMove, false);
+        undo.addEventListener('MSPointerUp', Undo, false);
+
+        document.onselectstart = function () { return false; }
+
+        var audio = new Audio();
+        var synth = new Windows.Media.SpeechSynthesis.SpeechSynthesizer();
+
+        function UndoMove() {
+            this.style.left = "92%";
+        }
+
+        function swapRole() {
+
+            var vvv = player1.innerHTML;
+            player1.innerHTML = player2.innerHTML;
+            player2.innerHTML = vvv;
+
+            var aaa = sentence.player1.role;
+            sentence.player1.role = sentence.player2.role
+            sentence.player2.role = aaa;
+
+            if (turn === "player1") {
+                turn = "player2";
+                player1.style.background = "radial-gradient(#FF4500, #8B0000)";
+                player2.style.background = "radial-gradient(#00FF00, #006400)";
+            }
+            else {
+                turn = "player1";
+                player2.style.background = "radial-gradient(#FF4500, #8B0000)";
+                player1.style.background = "radial-gradient(#00FF00, #006400)";
+            }
+
+            clearAll();
+
+        }
+
+        function powerup() {
+            localFolder.getFileAsync("saves.txt")
+               .done(function (sampleFile) {
+
+                   return Windows.Storage.FileIO.readTextAsync(sampleFile).then(function (data) {
+                       jsonData = JSON.parse(data);
+                       curDir = jsonData.home;
+                       loopJson(jsonData.home, 0)
+                   });
+               }, function () {
+                   jsonData = { "home": [] }
+                   curDir = jsonData.home;
+               }
+
+            );
+        }
+
+        function loopJson(js, inin) {
+            for (var ff = 1 ; ff < 47 ; ff += 1) {
+                symbols[ff].innerHTML = "";
+            }
+            symbols[47].style.display = "none";
+            symIndex = 1;
+            for (var i = inin; i < js.length; i += 1) {
+                if (symIndex === 47) {
+                    symbols[symIndex].style.display = "inline";
+                    return;
+                }
+                if (js[i].type === "symbol") {
+                    symbols[symIndex].appendChild(createSub(js[i].name, js[i].content, "sym"));
+                }
+                else {
+                    symbols[symIndex].appendChild(createSub(js[i].name, "images/folder.png", "fol"));
+                }
+                symIndex += 1;
+            }
+        }
+
+        function nextPage() {
+            if (dataIndex == 0) {
+                symbols[0].innerHTML = "";
+                symbols[0].appendChild(createSub("Previous page", "images/back.png", "back"));
+            }
+            dataIndex += 46;
+            loopJson(curDir, dataIndex);
+        }
+        function previousPage() {
+            dataIndex -= 46;
+            if (dataIndex == 0) {
+                symbols[0].innerHTML = "";
+                if (inSub != -99) {
+                    symbols[0].appendChild(createSub("Back to home", "images/back.png", "backhome"));
+                }
+                else {
+                    symbols[0].appendChild(createSub("HOME", "images/home.png", "home"));
+                }
+            }
+            loopJson(curDir, dataIndex);
+        }
+        function toHome() {
+            inSub = -99;
+            curDir = jsonData.home;
+            symbols[0].innerHTML = "";
+            symbols[0].appendChild(createSub("HOME", "images/home.png", "home"));
+            loopJson(curDir, dataIndex);
+        }
+
+        function quitt() {
+            localFolder.createFileAsync("saves.txt", Windows.Storage.CreationCollisionOption.replaceExisting).then(function (sampleFile) {
+
+                return Windows.Storage.FileIO.writeTextAsync(sampleFile, JSON.stringify(jsonData));
+            }).done(function () {
+
+                window.close();
+            });
+            
+        }
+
+        function Undo() {
+
+            if (sentence[turn].senten.length > 0) {
+                conIndex -= 1;
+                conversations[conIndex - 1].innerHTML = "";
+                conversations[conIndex - 1].style.border = "2px #191970 dotted";
+                sentence[turn].senten.pop();
+
+                if (sentence[turn].senten.length == 0) {
+                    if (sentence[turn].role === "Q") {
+
+                        swap.className = "swapEnable";
+                        swap.disabled = false;
+
+                    }
+                }
+            }
+
+            this.style.left = "94%";
+
+        }
+
+        function showit() {
+            menuBox.style.animationName = 'bringUp';
+        }
+        function hiddit() {
+            menuBox.style.animationName = 'bringOut';
+        }
+        function stoppu() {
+
+            if (this.style.animationName === "bringUp") {
+                this.style.top = "0%";
+                this.style.left = "0%";
+                right.style.display = "none";
+                left.style.display = "inline";
+            }
+            else {
+                this.style.top = "-40.5%";
+                this.style.left = "-13%";
+                left.style.display = "none";
+                right.style.display = "inline";
+            }
+            this.style.animationName = '';
+        }
+        function addit() {
+            deleteFile.style.display = "none";
+            exxit.style.display = "none";
+            addSymbol.style.display = "none";
+            clearScreen.style.display = "none";
+            category.style.display = "inline";
+            selImage.style.display = "inline";
+            imageName.style.display = "inline";
+            fake.style.display = "inline";
+            ok.style.display = "inline";
+            no.style.display = "inline";
+            minder.style.display = "inline";
+            minder2.style.display = "inline";
+        }
+
+        function handleFileSelection(evt) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                var tempimg = document.createElement("img");
+                tempData = e.target.result;
+                tempimg.src = tempData;
+                tempimg.style.width = "100%";
+                tempimg.style.height = "100%";
+                fake.innerHTML = "";
+                fake.appendChild(tempimg);
+            }
+            reader.readAsDataURL(evt.target.files[0]);
+        }
+
+        function accept() {
+            var symblName = imageName.value.trim();
+            var cate = category.value.trim(), cateI;
+            if (symblName === "" && tempData === "") {
+                //warning.style.display = "inline";
+                return;
+            }
+            if (cate === "") {
+                jsonData.home.push({ "name": symblName, "content": tempData, "type": "symbol" });
+                if (inSub != -99) {
+                    return;
+                }
+                if (symIndex > 46) {
+                    symbols[47].style.display = "inline";
+                    return;
+                }
+                symbols[symIndex].appendChild(createSub(symblName, tempData, "sym"));
+                symIndex += 1;
+            }
+            else {
+                cateI = dontExist(cate);
+                if (cateI === "skull") {
+                    jsonData.home.push({ "name": cate, "content": [{ "name": symblName, "content": tempData, "type": "symbol" }], "type": "folder" });
+                    if (inSub != -99) {
+                        return;
+                    }
+                    if (symIndex > 46) {
+                        symbols[47].style.display = "inline";
+                        return;
+                    }
+                    symbols[symIndex].appendChild(createSub(cate, "images/folder.png", "fol"));
+                    symIndex += 1;
+                }
+                else {
+                    jsonData.home[cateI].content.push({ "name": symblName, "content": tempData, "type": "symbol" });
+                    if (inSub === cate) {
+                        if (symIndex > 46) {
+                            symbols[47].style.display = "inline";
+                            return;
+                        }
+                        symbols[symIndex].appendChild(createSub(symblName, tempData, "sym"));
+                        symIndex += 1;
+                    }
+                }
+            }
+            //tempData = "";
+            //fake.innerHTML = "";
+            //imageName.value = "";
+            //cate.value = "";
+
+            /*menuBox.removeChild(selImage);
+			selImage = document.createElement("input");
+			selImage.type = "file";
+			selImage.id = "selImage";
+			selImage.addEventListener("change", handleFileSelection, false);
+			menuBox.appendChild(selImage);*/
+        }
+        function dontExist(cate) {
+            for (var i = 0; i < jsonData.home.length; i += 1) {
+                if (jsonData.home[i].name === cate && jsonData.home[i].type === "folder") {
+                    return i;
+                }
+            }
+            return "skull";
+        }
+        function changeBorder() {
+            this.style.border = "1.5px green solid";
+        }
+        function backBorder() {
+            this.style.border = "0px white solid";
+        }
+        function cancel() {
+            deleteFile.style.display = "inline";
+            exxit.style.display = "inline";
+            addSymbol.style.display = "inline";
+            clearScreen.style.display = "inline";
+
+            selImage.style.display = "none";
+            imageName.style.display = "none";
+            fake.style.display = "none";
+            ok.style.display = "none";
+            no.style.display = "none";
+            minder.style.display = "none";
+            minder2.style.display = "none";
+            category.style.display = "none";
+        }
+
+        function createSub(name, pic, type) {
+            var sub = document.createElement("div");
+            var txt = document.createElement("div");
+            var img = document.createElement("img");
+            sub.title = name;
+            txt.innerHTML = "<span>" + name + "</span>";
+            sub.className = "sub";
+            txt.className = "symTxt";
+            img.className = "symImg";
+            if (type === "fol") {
+                txt.className = "folTxt";
+                img.className = "folImg";
+                sub.addEventListener('MSPointerUp', downIn, false);
+                sub.addEventListener('MSPointerDown', changeBorder, false);
+                sub.style.WebkitAnimationName = "zoom";
+                sub.style.animationName = "zoom";
+            }
+            else if (type === "sym") {
+                sub.addEventListener('MSPointerDown', down, false);
+                sub.className += " symSub";
+                sub.style.WebkitAnimationName = "flip";
+                sub.style.animationName = "flip";
+            }
+            else if (type === "backhome") {
+                sub.addEventListener("MSPointerUp", toHome, false);
+                sub.addEventListener('MSPointerDown', changeBorder, false);
+                sub.addEventListener('MSPointerOut', backBorder, false);
+            }
+            else if (type === "back") {
+                sub.addEventListener("MSPointerUp", previousPage, false);
+                sub.addEventListener('MSPointerDown', changeBorder, false);
+                sub.addEventListener('MSPointerOut', backBorder, false);
+            }
+            else if (type === "sock") {
+                sub.style.WebkitAnimationName = "flop";
+                sub.style.animationName = "flop";
+                sub.style.left = "0px";
+                sub.style.top = "0px";
+            }
+            img.src = pic;
+            sub.appendChild(img);
+            sub.appendChild(txt);
+            return sub;
+        }
+
+        function setUp() {
+            var i, j, imb;
+
+            for (j = 1; j < 3; j += 1) {
+                for (i = 1; i < 11; i += 1) {
+                    imb = document.createElement("div");
+                    imb.style.left = 14.2 + i * 0.6 + (i - 1) * 6.5 + "%";
+                    imb.style.top = j + (j - 1) * 10 + "%";
+                    imb.className = "box";
+                    symbols.push(imb);
+                    document.body.appendChild(imb);
+                }
+            }
+
+            for (j = 1; j < 3; j += 1) {
+                for (i = 1; i < 15; i += 1) {
+                    imb = document.createElement("div");
+                    imb.style.left = 0.6 * i + (i - 1) * 6.5 + "%";
+                    imb.style.top = 22 + j + (j - 1) * 10 + "%";
+                    imb.className = "box";
+                    symbols.push(imb);
+                    document.body.appendChild(imb);
+                }
+            }
+            symbols[0].appendChild(createSub("HOME", "images/home.png", "home"));
+            symbols[47].appendChild(createSub("Next page", "images/more.png", "next"));
+            symbols[47].addEventListener("MSPointerUp", nextPage, false);
+            symbols[47].addEventListener('MSPointerDown', changeBorder, false);
+            symbols[47].addEventListener('MSPointerOut', backBorder, false);
+            symbols[47].style.display = "none";
+
+            for (j = 1; j < 11; j += 1) {
+                for (i = 1; i < 13; i += 1) {
+                    imb = document.createElement("div");
+                    imb.style.left = i * 0.8 + (i - 1) * 7.2 + "%";
+                    imb.style.top = j * 2.5 + (j - 1) * 20 + "%";
+                    imb.className = "socket";
+                    conversations.push(imb);
+                    table.appendChild(imb);
+                }
+            }
+
+            swap.className = "swapEnable";
+            swap.disabled = false;
+
+        }
+
+        var sentence = { "player1": { "role": "Q", "senten": [] }, "player2": { "role": "A", "senten": [] } }, turn = "player1", conStop = 1;
+
+        audio.defaultPlaybackRate = 0.7;
+
+        function compuletu() {
+            this.parentNode.removeChild(this);
+        }
+
+        function swapColor() {
+            var speak = "", starImg;
+            this.style.boxShadow = "";
+            if (turn === "player1") {
+                if (sentence.player1.senten.length == 0) {
+                    return;
+                }
+
+                for (var jojo = 0; jojo < sentence[turn].senten.length; jojo += 1) {
+                    speak += sentence[turn].senten[jojo] + " ";
+
+                    starImg = document.createElement("img");
+                    starImg.className = "starImg";
+                    starImg.src = "images/twinkle7.gif";
+                    starImg.style.WebkitAnimationName = "twinkle";
+                    starImg.style.animationName = "twinkle";
+                    starImg.addEventListener('animationend', compuletu, false);
+                    conversations[conIndex - sentence[turn].senten.length + jojo - 1].appendChild(starImg);
+
+                }
+                synth.synthesizeTextToStreamAsync(speak).then(function (markersStream) {
+                    var blob = MSApp.createBlobFromRandomAccessStream(markersStream.ContentType, markersStream);
+                    audio.src = URL.createObjectURL(blob, { oneTimeOnly: true });
+                    audio.play();
+                });
+
+                player1.style.background = "radial-gradient(#FF4500, #8B0000)";
+                player2.style.background = "radial-gradient(#00FF00, #006400)";
+                turn = "player2";
+
+                if (sentence.player2.role === "Q") {
+                    sentence.player1.senten = [];
+                    sentence.player2.senten = [];
+
+                    swap.className = "swapEnable";
+                    swap.disabled = false;
+                }
+
+            }
+            else {
+                if (sentence.player2.senten.length == 0) {
+                    return;
+                }
+
+                for (var jojo = 0; jojo < sentence[turn].senten.length; jojo += 1) {
+                    speak += sentence[turn].senten[jojo] + " ";
+
+                    starImg = document.createElement("img");
+                    starImg.className = "starImg";
+                    starImg.src = "images/twinkle7.gif";
+                    starImg.style.WebkitAnimationName = "twinkle";
+                    starImg.style.animationName = "twinkle";
+                    starImg.addEventListener('animationend', compuletu, false);
+                    conversations[conIndex - sentence[turn].senten.length + jojo - 1].appendChild(starImg);
+
+                }
+                synth.synthesizeTextToStreamAsync(speak).then(function (markersStream) {
+                    var blob = MSApp.createBlobFromRandomAccessStream(markersStream.ContentType, markersStream);
+                    audio.src = URL.createObjectURL(blob, { oneTimeOnly: true });
+                    audio.play();
+                });
+
+                player1.style.background = "radial-gradient(#00FF00, #006400)";
+                player2.style.background = "radial-gradient(#FF4500, #8B0000)";
+                turn = "player1";
+
+                if (sentence.player1.role === "Q") {
+                    sentence.player1.senten = [];
+                    sentence.player2.senten = [];
+
+                    swap.className = "swapEnable";
+                    swap.disabled = false;
+                }
+
+            }
+            if (conColor === "orange") {
+                conColor = "purple";
+            }
+            else {
+                conColor = "orange";
+            }
+
+            conIndex = conIndex + (13 - conIndex % 12);
+        }
+
+        function ballshade() {
+            this.style.boxShadow = "0px 0px 25px blue";
+        }
+        setUp();
+
+        player1.style.background = "radial-gradient(#00FF00, #006400)";
+        player1.style.height = player1.clientWidth + "px";
+        player1.style.borderRadius = player1.clientWidth / 2 + "px";
+        player1.addEventListener("MSPointerUp", swapColor, false);
+        player1.addEventListener("MSPointerDown", ballshade, false);
+
+        player2.style.background = "radial-gradient(#FF4500, #8B0000)";
+        player2.style.height = player2.clientWidth + "px";
+        player2.style.borderRadius = player2.clientWidth / 2 + "px";
+        player2.addEventListener("MSPointerUp", swapColor, false);
+        player2.addEventListener("MSPointerDown", ballshade, false);
+
+        function clearAll() {
+            for (var t = 0; t < 120; t += 1) {
+                conversations[t].innerHTML = "";
+                conversations[t].style.border = "2px #191970 dotted";
+            }
+            conIndex = 1;
+            conColor = "purple";
+            sentence.player1.senten = [];
+            sentence.player2.senten = [];
+        }
+
+        var dragIds = {}, idd = 0;
+        var conColor = "purple";
+        var tableLeft = table.offsetLeft;
+        var tableTop = table.offsetTop;
+        var tableWidth = table.clientWidth;
+        var tableHeight = table.clientHeight;
+        var symWidth = symbols[0].clientWidth / 2;
+        var symHeight = symbols[0].clientHeight / 2;
+        function down() {
+            var puss = document.createElement("img");
+            puss.src = this.childNodes[0].src;
+            puss.name = this.title;
+            puss.id = idd + "d";
+            idd += 1;
+            puss.style.position = "absolute";
+            puss.style.left = this.parentNode.style.left;
+            puss.style.top = this.parentNode.style.top;
+            puss.style.width = symWidth * 2 + "px";
+            puss.style.height = symHeight * 2 + "px";
+            puss.style.opacity = "0.8";
+            document.body.appendChild(puss);
+            dragIds[puss.id] = [puss, puss.offsetLeft + symWidth, puss.offsetTop + symHeight];
+            puss.addEventListener("MSPointerOut", up, false);
+            puss.addEventListener("MSPointerMove", drag, false);
+        }
+        function up(event) {
+            if (event.pageX >= tableLeft && event.pageX <= tableLeft + tableWidth && event.pageY >= tableTop && event.pageY <= tableTop + tableHeight) {
+                conversations[conIndex - 1].appendChild(createSub(this.name, this.src, "sock"));
+                conversations[conIndex - 1].style.border = "2px " + conColor + " solid";
+                conIndex += 1;
+                sentence[turn].senten.push(this.name);
+                synth.synthesizeTextToStreamAsync(this.name).then(function (markersStream) {
+                    var blob = MSApp.createBlobFromRandomAccessStream(markersStream.ContentType, markersStream);
+                    audio.src = URL.createObjectURL(blob, { oneTimeOnly: true });
+                    audio.play();
+                });
+
+                swap.className = "swapDisable";
+                swap.disabled = true;
+
+            }
+            delete dragIds[this.id];
+            document.body.removeChild(this);
+        }
+        function upDate() {
+            for (var prop in dragIds) {
+
+                if (dragIds.hasOwnProperty(prop)) {
+                    dragIds[prop][0].style.left = dragIds[prop][1] - symWidth + 'px';
+                    dragIds[prop][0].style.top = dragIds[prop][2] - symHeight + 'px';
+                }
+            }
+            requestAnimationFrame(upDate);
+        }
+        upDate();
+
+        //var allowSample = true;
+        function drag(event) {
+            /*if (allowSample) {
+				allowSample = false;
+				this.style.left = event.pageX - this.clientWidth / 2 + 'px';
+				this.style.top = event.pageY - this.clientHeight / 2 + 'px';
+				setTimeout(function () { allowSample = true; }, 17)
+			}*/
+            dragIds[this.id][1] = event.pageX;
+            dragIds[this.id][2] = event.pageY;
+        }
+        var curDir, inSub = -99;
+        function downIn() {
+            dataIndex = 0;
+            curDir = jsonData.home[dontExist(this.title)].content;
+            symbols[0].innerHTML = "";
+            symbols[0].appendChild(createSub("Back to home", "images/back.png", "backhome"));
+            loopJson(curDir, dataIndex);
+            inSub = this.title;
+        }
+
+    </script>
+</body>
+</html>
